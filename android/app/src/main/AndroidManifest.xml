@@ -1,4 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Required for google_fonts to fetch fonts from the internet -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:label="tugas4pbl"
         android:name="${applicationName}"
