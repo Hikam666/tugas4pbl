@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-//import 'login.dart';
-import 'package:tugas4pbl/goals_screen.dart';
+import 'login.dart';
  
 void main() {
   runApp(const MyApp());
@@ -16,12 +15,11 @@ class MyApp extends StatelessWidget {
       title: 'Money Tracker',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF3ECFCF)),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF3B82F6)),
         useMaterial3: true,
         textTheme: GoogleFonts.dmSansTextTheme(),
       ),
-      home: const GoalsScreen(),
-      //home: const LoginScreen(),
+      home: const LoginScreen(),
     );
   }
 }

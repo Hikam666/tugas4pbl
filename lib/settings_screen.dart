@@ -17,7 +17,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bg,
-      bottomNavigationBar: _buildBottomNav(),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
@@ -29,51 +28,37 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    children: [
-                      Container(
-                        width: 36,
-                        height: 36,
-                        decoration: BoxDecoration(
-                          color: AppColors.cyan,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: Text('L',
-                              style: AppText.lora(
-                                  size: 18,
-                                  weight: FontWeight.w800,
-                                  color: AppColors.bg)),
-                        ),
+                    children: const [
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundColor: AppColors.surface2,
+                        child: Icon(Icons.person, color: AppColors.muted),
                       ),
-                      const SizedBox(width: 10),
-                      Text('Lumina',
-                          style: AppText.lora(
-                              size: 18,
-                              weight: FontWeight.w700,
-                              color: AppColors.cyan)),
                     ],
                   ),
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: AppColors.warmBg,
-                      border: Border.all(color: AppColors.warmBdr),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.badge_outlined,
-                            color: AppColors.warm, size: 14),
-                        const SizedBox(width: 4),
-                        Text('12',
-                            style: AppText.dm(
-                                size: 12,
-                                weight: FontWeight.w700,
-                                color: AppColors.warm)),
-                      ],
-                    ),
-                  ),
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: AppColors.warmBg,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Row(
+                          children: [
+                            Icon(Icons.local_fire_department,
+                                color: AppColors.warm, size: 14),
+                            SizedBox(width: 6),
+                            Text("14 Day Streak",
+                                style: TextStyle(
+                                    color: AppColors.warm, fontSize: 11, fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      const Icon(Icons.notifications_none, color: AppColors.text),
+                    ],
+                  )
                 ],
               ),
               const SizedBox(height: 32),
@@ -119,13 +104,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Aley Rivera',
+                          Text('Hikam',
                               style: AppText.dm(
                                   size: 16,
                                   weight: FontWeight.w700,
                                   color: AppColors.text)),
                           const SizedBox(height: 2),
-                          Text('alex.rivera@lumina.io',
+                          Text('Hikam@gmail.com',
                               style: AppText.dm(
                                   size: 12, color: AppColors.muted)),
                         ],
@@ -231,11 +216,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
               // ── Version ───────────────────────────────────────────
               Center(
-                child: Text('LUMINA V4.2.0-ASTRA',
-                    style: AppText.dm(
-                        size: 10,
-                        color: AppColors.subtle,
-                        letterSpacing: 1.5)),
+                child: Text('MONEY TRACKER V4.2.0',
+                  style: AppText.dm(
+                    size: 10,
+                    color: AppColors.subtle,
+                    letterSpacing: 1.5,
+                  ),
+                ),
               ),
               const SizedBox(height: 8),
             ],
@@ -345,47 +332,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
             trackColor: AppColors.subtle,
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildBottomNav() {
-    return SafeArea(
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 28),
-        decoration: const BoxDecoration(
-          color: AppColors.bg,
-          border: Border(top: BorderSide(color: AppColors.border)),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const Icon(Icons.home_filled, color: AppColors.muted, size: 24),
-            const Icon(Icons.receipt_long_outlined,
-                color: AppColors.muted, size: 24),
-            const Icon(Icons.track_changes_outlined,
-                color: AppColors.muted, size: 24),
-            const Icon(Icons.bar_chart_rounded,
-                color: AppColors.muted, size: 24),
-            // Active: Settings
-            Container(
-              padding: const EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.cyanBg,
-                boxShadow: [
-                  BoxShadow(
-                    color: AppColors.cyanGlow,
-                    blurRadius: 14,
-                    spreadRadius: 2,
-                  ),
-                ],
-              ),
-              child: const Icon(Icons.settings_outlined,
-                  color: AppColors.cyan, size: 22),
-            ),
-          ],
-        ),
       ),
     );
   }

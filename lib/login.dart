@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'app_theme.dart';
-import 'home_screen.dart';
+import 'main_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
         _passwordCtrl.text == '12345678') {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
+        MaterialPageRoute(builder: (_) => const MainScreen()),
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             _buildHeroSection(),
-            _buildFormSection(),
+            Expanded(child: _buildFormSection()),
           ],
         ),
       ),
@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   _LogoMark(),
                   const SizedBox(height: 16),
                   Text(
-                    'Seamat\nDatang Kembali',
+                    'Selamat\nDatang Kembali',
                     style: AppText.lora(size: 28),
                   ),
                   const SizedBox(height: 6),

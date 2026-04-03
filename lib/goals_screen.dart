@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'app_theme.dart';
 
 class GoalsScreen extends StatefulWidget {
   const GoalsScreen({super.key});
@@ -8,12 +9,10 @@ class GoalsScreen extends StatefulWidget {
 }
 
 class _GoalsScreenState extends State<GoalsScreen> {
-  int _selectedIndex = 2;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF0D1B2A),
+      backgroundColor: AppColors.bg,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -25,52 +24,37 @@ class _GoalsScreenState extends State<GoalsScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
-                    children: [
-                      Container(
-                        width: 36,
-                        height: 36,
-                        decoration: BoxDecoration(
-                          color: const Color(0xFF1B263B),
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                              color: const Color(0xFF00C2D1).withOpacity(0.3)),
-                        ),
-                        child: const Center(
-                          child: Text('L',
-                              style: TextStyle(
-                                  color: Color(0xFF00C2D1),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16)),
-                        ),
+                    children: const [
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundColor: AppColors.surface2,
+                        child: Icon(Icons.person, color: AppColors.muted),
                       ),
-                      const SizedBox(width: 10),
-                      const Text('Lumina',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold)),
                     ],
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF3D2C22),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      children: const [
-                        Icon(Icons.military_tech,
-                            color: Colors.orange, size: 14),
-                        SizedBox(width: 4),
-                        Text('streak_badge',
-                            style: TextStyle(
-                                color: Colors.orange,
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700)),
-                      ],
-                    ),
-                  ),
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          color: AppColors.warmBg,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Row(
+                          children: [
+                            Icon(Icons.local_fire_department,
+                                color: AppColors.warm, size: 14),
+                            SizedBox(width: 6),
+                            Text("14 Day Streak",
+                                style: TextStyle(
+                                    color: AppColors.warm, fontSize: 11, fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      const Icon(Icons.notifications_none, color: AppColors.text),
+                    ],
+                  )
                 ],
               ),
               const SizedBox(height: 20),
@@ -79,7 +63,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
               const Text(
                 'Targets & Bills',
                 style: TextStyle(
-                  color: Colors.white,
+              color: AppColors.text,
                   fontSize: 26,
                   fontWeight: FontWeight.w900,
                   letterSpacing: 0.5,
@@ -88,7 +72,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
               const Text(
                 'FINANCIAL CONTROL CENTER',
                 style: TextStyle(
-                  color: Colors.white38,
+              color: AppColors.muted,
                   fontSize: 10,
                   letterSpacing: 1.5,
                   fontWeight: FontWeight.w600,
@@ -103,23 +87,23 @@ class _GoalsScreenState extends State<GoalsScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF1B263B).withOpacity(0.5),
+                    color: AppColors.surface,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.white10),
+                    border: Border.all(color: AppColors.border),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text('SAVED TODAY',
                               style: TextStyle(
-                                  color: Colors.white38,
+                              color: AppColors.muted,
                                   fontSize: 9,
                                   letterSpacing: 1.2,
                                   fontWeight: FontWeight.w600)),
                           SizedBox(height: 6),
                           Text('Rp 125.000',
                               style: TextStyle(
-                                  color: Color(0xFF00C2D1),
+                              color: AppColors.cyan,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold)),
                         ],
@@ -131,23 +115,23 @@ class _GoalsScreenState extends State<GoalsScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF1B263B).withOpacity(0.5),
+                    color: AppColors.surface,
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: Colors.white10),
+                    border: Border.all(color: AppColors.border),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text('UPCOMING BILLS',
                               style: TextStyle(
-                                  color: Colors.white38,
+                              color: AppColors.muted,
                                   fontSize: 9,
                                   letterSpacing: 1.2,
                                   fontWeight: FontWeight.w600)),
                           SizedBox(height: 6),
                           Text('3 Active',
                               style: TextStyle(
-                                  color: Colors.white,
+                          color: AppColors.text,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold)),
                         ],
@@ -167,12 +151,12 @@ class _GoalsScreenState extends State<GoalsScreen> {
                     children: const [
                       Text('Tabungan Impian (Wishlist)',
                           style: TextStyle(
-                              color: Colors.white,
+                          color: AppColors.text,
                               fontSize: 16,
                               fontWeight: FontWeight.bold)),
                       Text('Visualize your future gear.',
                           style: TextStyle(
-                              color: Colors.white38, fontSize: 11)),
+                          color: AppColors.muted, fontSize: 11)),
                     ],
                   ),
                   Container(
@@ -181,11 +165,10 @@ class _GoalsScreenState extends State<GoalsScreen> {
                     decoration: BoxDecoration(
                       color: const Color(0xFF00C2D1).withOpacity(0.15),
                       shape: BoxShape.circle,
-                      border: Border.all(
-                          color: const Color(0xFF00C2D1).withOpacity(0.4)),
+                  border: Border.all(color: AppColors.cyanBdr),
                     ),
                     child: const Icon(Icons.add,
-                        color: Color(0xFF00C2D1), size: 16),
+                    color: AppColors.cyan, size: 16),
                   ),
                 ],
               ),
@@ -196,9 +179,9 @@ class _GoalsScreenState extends State<GoalsScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1B263B).withOpacity(0.5),
+              color: AppColors.surface,
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: Colors.white10),
+              border: Border.all(color: AppColors.border),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -209,11 +192,11 @@ class _GoalsScreenState extends State<GoalsScreen> {
                           width: 40,
                           height: 40,
                           decoration: BoxDecoration(
-                            color: const Color(0xFF1B263B),
+                        color: AppColors.surface2,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Icon(Icons.headphones,
-                              color: Color(0xFF00C2D1), size: 20),
+                          color: AppColors.cyan, size: 20),
                         ),
                         const SizedBox(width: 12),
                         Expanded(
@@ -222,19 +205,19 @@ class _GoalsScreenState extends State<GoalsScreen> {
                             children: const [
                               Text('TWS Sony WH-1000XM5',
                                   style: TextStyle(
-                                      color: Colors.white,
+                                  color: AppColors.text,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w700)),
                               Text('60% Completed',
                                   style: TextStyle(
-                                      color: Color(0xFF00C2D1),
+                                  color: AppColors.cyan,
                                       fontSize: 11,
                                       fontWeight: FontWeight.w600)),
                             ],
                           ),
                         ),
                         const Icon(Icons.more_vert,
-                            color: Colors.white38, size: 18),
+                        color: AppColors.muted, size: 18),
                       ],
                     ),
                     const SizedBox(height: 12),
@@ -242,9 +225,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                       borderRadius: BorderRadius.circular(4),
                       child: LinearProgressIndicator(
                         value: 0.60,
-                        backgroundColor: Colors.white10,
-                        valueColor: const AlwaysStoppedAnimation<Color>(
-                            Color(0xFF00C2D1)),
+                    backgroundColor: AppColors.border,
+                    valueColor: const AlwaysStoppedAnimation<Color>(AppColors.cyan),
                         minHeight: 6,
                       ),
                     ),
@@ -253,11 +235,9 @@ class _GoalsScreenState extends State<GoalsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         Text('RP 1.800.000',
-                            style: TextStyle(
-                                color: Colors.white38, fontSize: 11)),
+                        style: TextStyle(color: AppColors.muted, fontSize: 11)),
                         Text('TARGET: RP 3.000.000',
-                            style: TextStyle(
-                                color: Colors.white38, fontSize: 11)),
+                        style: TextStyle(color: AppColors.muted, fontSize: 11)),
                       ],
                     ),
                     const SizedBox(height: 10),
@@ -265,21 +245,19 @@ class _GoalsScreenState extends State<GoalsScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 10, vertical: 8),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF00C2D1).withOpacity(0.1),
+                    color: AppColors.cyanBg,
                         borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                            color: const Color(0xFF00C2D1).withOpacity(0.2)),
+                    border: Border.all(color: AppColors.cyanBdr),
                       ),
                       child: Row(
                         children: const [
                           Icon(Icons.tips_and_updates_outlined,
-                              color: Color(0xFF00C2D1), size: 14),
+                          color: AppColors.cyan, size: 14),
                           SizedBox(width: 6),
                           Expanded(
                             child: Text(
                               'Simulasi: Stop nongkrong 30 hari untuk mencapai target lebih cepat!',
-                              style: TextStyle(
-                                  color: Color(0xFF00C2D1), fontSize: 11),
+                          style: TextStyle(color: AppColors.cyan, fontSize: 11),
                             ),
                           ),
                         ],
@@ -295,9 +273,9 @@ class _GoalsScreenState extends State<GoalsScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1B263B).withOpacity(0.5),
+              color: AppColors.surface,
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: Colors.white10),
+              border: Border.all(color: AppColors.border),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -308,11 +286,11 @@ class _GoalsScreenState extends State<GoalsScreen> {
                           width: 40,
                           height: 40,
                           decoration: BoxDecoration(
-                            color: const Color(0xFF1B263B),
+                        color: AppColors.surface2,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Icon(Icons.phone_iphone,
-                              color: Colors.white38, size: 20),
+                          color: AppColors.muted, size: 20),
                         ),
                         const SizedBox(width: 12),
                         Expanded(
@@ -321,19 +299,19 @@ class _GoalsScreenState extends State<GoalsScreen> {
                             children: const [
                               Text('iPhone 16 Pro',
                                   style: TextStyle(
-                                      color: Colors.white,
+                          color: AppColors.text,
                                       fontSize: 14,
                                       fontWeight: FontWeight.w700)),
                               Text('25% Progress',
                                   style: TextStyle(
-                                      color: Colors.white38,
+                                  color: AppColors.muted,
                                       fontSize: 11,
                                       fontWeight: FontWeight.w500)),
                             ],
                           ),
                         ),
                         const Icon(Icons.more_vert,
-                            color: Colors.white38, size: 18),
+                        color: AppColors.muted, size: 18),
                       ],
                     ),
                     const SizedBox(height: 12),
@@ -341,9 +319,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                       borderRadius: BorderRadius.circular(4),
                       child: LinearProgressIndicator(
                         value: 0.25,
-                        backgroundColor: Colors.white10,
-                        valueColor: const AlwaysStoppedAnimation<Color>(
-                            Colors.white38),
+                    backgroundColor: AppColors.border,
+                    valueColor: const AlwaysStoppedAnimation<Color>(AppColors.muted),
                         minHeight: 6,
                       ),
                     ),
@@ -352,11 +329,9 @@ class _GoalsScreenState extends State<GoalsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         Text('RP 4.500.000',
-                            style: TextStyle(
-                                color: Colors.white38, fontSize: 11)),
+                        style: TextStyle(color: AppColors.muted, fontSize: 11)),
                         Text('RP 18.000.000',
-                            style: TextStyle(
-                                color: Colors.white38, fontSize: 11)),
+                        style: TextStyle(color: AppColors.muted, fontSize: 11)),
                       ],
                     ),
                   ],
@@ -373,7 +348,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
                     children: const [
                       Text('Radar Langganan',
                           style: TextStyle(
-                              color: Colors.white,
+                              color: AppColors.text,
                               fontSize: 16,
                               fontWeight: FontWeight.bold)),
                       Text('(Active Bills)',
@@ -383,7 +358,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
                               fontWeight: FontWeight.w500)),
                       Text('Automated tracking for recurring costs.',
                           style: TextStyle(
-                              color: Colors.white38, fontSize: 11)),
+                          color: AppColors.muted, fontSize: 11)),
                     ],
                   ),
                   TextButton(
@@ -393,7 +368,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
                       'EDIT\nSUBSCRIPTIONS',
                       textAlign: TextAlign.right,
                       style: TextStyle(
-                          color: Color(0xFF00C2D1),
+                      color: AppColors.cyan,
                           fontSize: 10,
                           fontWeight: FontWeight.w700,
                           letterSpacing: 0.5,
@@ -407,9 +382,9 @@ class _GoalsScreenState extends State<GoalsScreen> {
               // Subscription Items
               Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1B263B).withOpacity(0.5),
+              color: AppColors.surface,
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: Colors.white10),
+              border: Border.all(color: AppColors.border),
                 ),
                 child: Column(
                   children: [
@@ -419,7 +394,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
                       iconBg: const Color(0xFF0A1F0F),
                       title: 'Spotify Premium',
                       subtitle: 'BESOK',
-                      subtitleColor: Colors.orangeAccent,
+                  subtitleColor: AppColors.warm,
                       amount: 'Rp 54.900',
                       amountSub: 'MONTHLY',
                       showDivider: true,
@@ -430,18 +405,18 @@ class _GoalsScreenState extends State<GoalsScreen> {
                       iconBg: const Color(0xFF1F0A0A),
                       title: 'Netflix Basic',
                       subtitle: '5 hari lagi',
-                      subtitleColor: Colors.white38,
+                  subtitleColor: AppColors.muted,
                       amount: 'Rp 65.000',
                       amountSub: 'AUTOMATIC',
                       showDivider: true,
                     ),
                     _buildSubscriptionItem(
                       icon: Icons.signal_cellular_alt,
-                      iconColor: const Color(0xFF00C2D1),
+                  iconColor: AppColors.cyan,
                       iconBg: const Color(0xFF0A2218),
                       title: 'Paket Data',
                       subtitle: '12 April',
-                      subtitleColor: Colors.white38,
+                  subtitleColor: AppColors.muted,
                       amount: 'Rp 100.000',
                       amountSub: 'MANUAL PAY',
                       showDivider: false,
@@ -457,11 +432,9 @@ class _GoalsScreenState extends State<GoalsScreen> {
                 padding: const EdgeInsets.symmetric(
                     horizontal: 16, vertical: 14),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1B263B).withOpacity(0.5),
+              color: AppColors.surface,
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(
-                      color: const Color(0xFF00C2D1).withOpacity(0.3),
-                      width: 1),
+              border: Border.all(color: AppColors.cyanBdr, width: 1),
                 ),
                 child: Row(
                   children: [
@@ -469,11 +442,11 @@ class _GoalsScreenState extends State<GoalsScreen> {
                       width: 40,
                       height: 40,
                       decoration: const BoxDecoration(
-                        color: Color(0xFF3D2C22),
+                    color: AppColors.warmBg,
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(Icons.local_fire_department,
-                          color: Colors.orangeAccent, size: 22),
+                      color: AppColors.warm, size: 22),
                     ),
                     const SizedBox(width: 12),
                     Expanded(
@@ -481,58 +454,21 @@ class _GoalsScreenState extends State<GoalsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text('Streak Pulse',
-                              style: TextStyle(
-                                  color: Colors.white,
+                          style: TextStyle(
+                              color: AppColors.text,
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold)),
                           Text('12 Days Saving Streak!',
-                              style: TextStyle(
-                                  color: Colors.white38, fontSize: 11)),
+                          style: TextStyle(color: AppColors.muted, fontSize: 11)),
                         ],
                       ),
                     ),
                     const Icon(Icons.chevron_right,
-                        color: Color(0xFF00C2D1), size: 22),
+                    color: AppColors.cyan, size: 22),
                   ],
                 ),
               ),
               const SizedBox(height: 24),
-            ],
-          ),
-        ),
-      ),
-
-      // Bottom Nav — sama persis dengan home_screen
-      bottomNavigationBar: SafeArea(
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-          decoration: const BoxDecoration(
-            color: Color(0xFF0D1B2A),
-            border: Border(top: BorderSide(color: Colors.white10)),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Icon(Icons.home_filled, color: Colors.white38),
-              const Icon(Icons.receipt_long, color: Colors.white38),
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: const Color(0xFF00C2D1).withOpacity(0.15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color(0xFF00C2D1).withOpacity(0.3),
-                      blurRadius: 15,
-                      spreadRadius: 2,
-                    ),
-                  ],
-                ),
-                child: const Icon(Icons.track_changes,
-                    color: Color(0xFF00C2D1)),
-              ),
-              const Icon(Icons.bar_chart_rounded, color: Colors.white38),
-              const Icon(Icons.settings_outlined, color: Colors.white38),
             ],
           ),
         ),
@@ -572,8 +508,8 @@ class _GoalsScreenState extends State<GoalsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(title,
-                        style: const TextStyle(
-                            color: Colors.white,
+                    style: const TextStyle(
+                        color: AppColors.text,
                             fontSize: 13,
                             fontWeight: FontWeight.w600)),
                     const SizedBox(height: 2),
@@ -589,14 +525,14 @@ class _GoalsScreenState extends State<GoalsScreen> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(amount,
-                      style: const TextStyle(
-                          color: Colors.white,
+                  style: const TextStyle(
+                      color: AppColors.text,
                           fontSize: 13,
                           fontWeight: FontWeight.w700)),
                   const SizedBox(height: 2),
                   Text(amountSub,
                       style: const TextStyle(
-                          color: Colors.white38,
+                      color: AppColors.muted,
                           fontSize: 9,
                           letterSpacing: 0.8,
                           fontWeight: FontWeight.w600)),
@@ -609,7 +545,7 @@ class _GoalsScreenState extends State<GoalsScreen> {
           const Divider(
               height: 1,
               thickness: 1,
-              color: Colors.white10,
+          color: AppColors.border,
               indent: 16,
               endIndent: 16),
       ],
