@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             _buildHeroSection(),
-            Expanded(child: _buildFormSection()),
+            _buildFormSection(),
           ],
         ),
       ),
@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   _LogoMark(),
                   const SizedBox(height: 16),
                   Text(
-                    'Selamat\nDatang Kembali',
+                    'Seamat\nDatang Kembali',
                     style: AppText.lora(size: 28),
                   ),
                   const SizedBox(height: 6),
