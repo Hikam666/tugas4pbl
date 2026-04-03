@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'app_theme.dart';
+import 'login.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -9,19 +12,19 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _darkMode = true;
-  int _selectedIndex = 4;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF09121C), 
+      backgroundColor: AppColors.bg,
+      bottomNavigationBar: _buildBottomNav(),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Top Bar
+              // ── Top Bar ──────────────────────────────────────────
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -31,110 +34,100 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         width: 36,
                         height: 36,
                         decoration: BoxDecoration(
-                          color: const Color(0xFF15202B), 
+                          color: AppColors.cyan,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(
-                              color: const Color(0xFF212E3B)), 
                         ),
-                        child: const Center(
+                        child: Center(
                           child: Text('L',
-                              style: TextStyle(
-                                  color: Color(0xFF4FD1C5), 
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16)),
+                              style: AppText.lora(
+                                  size: 18,
+                                  weight: FontWeight.w800,
+                                  color: AppColors.bg)),
                         ),
                       ),
                       const SizedBox(width: 10),
-                      const Text('Lumina',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold)),
+                      Text('Lumina',
+                          style: AppText.lora(
+                              size: 18,
+                              weight: FontWeight.w700,
+                              color: AppColors.cyan)),
                     ],
                   ),
                   Container(
                     padding:
                         const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF15202B), 
+                      color: AppColors.warmBg,
+                      border: Border.all(color: AppColors.warmBdr),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
-                      children: const [
-                        Icon(Icons.local_fire_department,
-                            color: Color(0xFFFF8A65), size: 14), 
-                        SizedBox(width: 4),
+                      children: [
+                        const Icon(Icons.badge_outlined,
+                            color: AppColors.warm, size: 14),
+                        const SizedBox(width: 4),
                         Text('12',
-                            style: TextStyle(
-                                color: Color(0xFFFF8A65), 
-                                fontSize: 11,
-                                fontWeight: FontWeight.w700)),
+                            style: AppText.dm(
+                                size: 12,
+                                weight: FontWeight.w700,
+                                color: AppColors.warm)),
                       ],
                     ),
                   ),
                 ],
               ),
+              const SizedBox(height: 32),
+
+              // ── Title ─────────────────────────────────────────────
+              Text('SETTINGS',
+                  style: AppText.lora(
+                      size: 30,
+                      weight: FontWeight.w800,
+                      color: AppColors.text,
+                      letterSpacing: 2)),
+              const SizedBox(height: 4),
+              Text('APP PREFERENCES & SECURITY',
+                  style: AppText.dm(
+                      size: 11,
+                      color: AppColors.muted,
+                      letterSpacing: 1.2)),
               const SizedBox(height: 28),
 
-              // Title
-              const Text(
-                'SETTINGS',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 28,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 1.5,
-                ),
-              ),
-              const Text(
-                'APP PREFERENCES & SECURITY',
-                style: TextStyle(
-                  color: Color(0xFF718096), 
-                  fontSize: 11,
-                  letterSpacing: 1.2,
-                ),
-              ),
-              const SizedBox(height: 24),
-
-              // Profile Card
+              // ── Profile Card ──────────────────────────────────────
               Container(
-                width: double.infinity,
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF15202B), 
-                  borderRadius: BorderRadius.circular(14),
-                  border:
-                      Border.all(color: const Color(0xFF212E3B), width: 1), 
+                  color: AppColors.surface,
+                  borderRadius: BorderRadius.circular(18),
+                  border: Border.all(color: AppColors.border),
                 ),
                 child: Row(
                   children: [
                     Container(
-                      width: 44,
-                      height: 44,
+                      width: 50,
+                      height: 50,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF1A2633), 
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                            color: const Color(0xFF4FD1C5).withOpacity(0.3), // Diganti
-                            width: 1.5),
+                        color: AppColors.surface2,
+                        borderRadius: BorderRadius.circular(14),
+                        border: Border.all(color: AppColors.cyanBdr),
                       ),
-                      child: const Icon(Icons.person,
-                          color: Color(0xFF4FD1C5), size: 22), 
+                      child: const Icon(Icons.person_outline,
+                          color: AppColors.cyan, size: 26),
                     ),
                     const SizedBox(width: 14),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text('Aley Rivera',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w700)),
-                          SizedBox(height: 2),
+                              style: AppText.dm(
+                                  size: 16,
+                                  weight: FontWeight.w700,
+                                  color: AppColors.text)),
+                          const SizedBox(height: 2),
                           Text('alex.rivera@lumina.io',
-                              style: TextStyle(
-                                  color: Color(0xFF718096), fontSize: 12)), 
+                              style: AppText.dm(
+                                  size: 12, color: AppColors.muted)),
                         ],
                       ),
                     ),
@@ -142,290 +135,258 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: const Color(0xFF4FD1C5).withOpacity(0.1), 
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(
-                            color: const Color(0xFF4FD1C5).withOpacity(0.4)), 
+                        color: AppColors.cyanBg,
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: AppColors.cyanBdr),
                       ),
-                      child: const Text(
-                        'PRO\nPLAN',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF4FD1C5),
-                          fontSize: 8,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 0.5,
-                          height: 1.3,
-                        ),
-                      ),
+                      child: Text('PRO\nPLAN',
+                          textAlign: TextAlign.center,
+                          style: AppText.dm(
+                              size: 9,
+                              weight: FontWeight.w800,
+                              color: AppColors.cyan,
+                              letterSpacing: 0.5)),
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(height: 28),
+
+              // ── Section: PERSONAL ─────────────────────────────────
+              _buildSectionLabel('PERSONAL'),
+              const SizedBox(height: 10),
+              _buildMenuTile(
+                icon: Icons.person_outline,
+                label: 'Account',
+                onTap: () {},
+              ),
+              const SizedBox(height: 8),
+              _buildMenuTile(
+                icon: Icons.shield_outlined,
+                label: 'Security',
+                onTap: () {},
               ),
               const SizedBox(height: 24),
 
-              // PERSONAL Section
-              const Text('PERSONAL',
-                  style: TextStyle(
-                      color: Color(0xFF718096), 
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.5)),
+              // ── Section: APP EXPERIENCE ───────────────────────────
+              _buildSectionLabel('APP EXPERIENCE'),
               const SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xFF15202B), // Diganti
-                  borderRadius: BorderRadius.circular(14),
-                  border:
-                      Border.all(color: const Color(0xFF212E3B), width: 1), 
-                ),
-                child: Column(
-                  children: [
-                    _buildMenuItem(
-                      icon: Icons.person_outline,
-                      iconColor: const Color(0xFF4FD1C5), 
-                      title: 'Account',
-                      showDivider: true,
-                    ),
-                    _buildMenuItem(
-                      icon: Icons.shield_outlined,
-                      iconColor: const Color(0xFF4FD1C5), 
-                      title: 'Security',
-                      showDivider: false,
-                    ),
-                  ],
-                ),
+              _buildMenuTile(
+                icon: Icons.notifications_outlined,
+                label: 'Notifications',
+                onTap: () {},
               ),
-              const SizedBox(height: 20),
-
-              // APP EXPERIENCE Section
-              const Text('APP EXPERIENCE',
-                  style: TextStyle(
-                      color: Color(0xFF718096), 
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.5)),
-              const SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xFF15202B), 
-                  borderRadius: BorderRadius.circular(14),
-                  border:
-                      Border.all(color: const Color(0xFF212E3B), width: 1), 
-                ),
-                child: Column(
-                  children: [
-                    _buildMenuItem(
-                      icon: Icons.notifications_outlined,
-                      iconColor: const Color(0xFF4FD1C5), 
-                      title: 'Notifications',
-                      showDivider: true,
-                    ),
-                    // Dark Mode toggle
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 14),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 36,
-                            height: 36,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFF1A2633), 
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: const Icon(Icons.dark_mode_outlined,
-                                color: Color(0xFF4FD1C5), size: 18), 
-                          ),
-                          const SizedBox(width: 14),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text('Dark Mode',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500)),
-                                Text('ALWAYS ON',
-                                    style: TextStyle(
-                                        color: Color(0xFF4FD1C5), 
-                                        fontSize: 10,
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: 1)),
-                              ],
-                            ),
-                          ),
-                          Switch(
-                            value: _darkMode,
-                            onChanged: (val) =>
-                                setState(() => _darkMode = val),
-                            activeColor: const Color(0xFF4FD1C5), 
-                            activeTrackColor:
-                                const Color(0xFF4FD1C5).withOpacity(0.3), 
-                            inactiveThumbColor: const Color(0xFF718096), 
-                            inactiveTrackColor: const Color(0xFF212E3B), 
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              // SUPPORT Section
-              const Text('SUPPORT',
-                  style: TextStyle(
-                      color: Color(0xFF718096), 
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.5)),
-              const SizedBox(height: 10),
-              Container(
-                decoration: BoxDecoration(
-                  color: const Color(0xFF15202B), 
-                  borderRadius: BorderRadius.circular(14),
-                  border:
-                      Border.all(color: const Color(0xFF212E3B), width: 1), 
-                ),
-                child: _buildMenuItem(
-                  icon: Icons.help_outline,
-                  iconColor: const Color(0xFF4FD1C5), 
-                  title: 'Help & Support',
-                  showDivider: false,
-                ),
+              const SizedBox(height: 8),
+              _buildToggleTile(
+                icon: Icons.dark_mode_outlined,
+                label: 'Dark Mode',
+                subtitle: 'ALWAYS ON',
+                value: _darkMode,
+                onChanged: (v) => setState(() => _darkMode = v),
               ),
               const SizedBox(height: 24),
 
-              // Log Out Button
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: OutlinedButton.icon(
-                  onPressed: () {},
-                  style: OutlinedButton.styleFrom(
-                    side: BorderSide(
-                        color: const Color(0xFF4FD1C5).withOpacity(0.5), width: 1.5), 
-                    backgroundColor: Colors.transparent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
+              // ── Section: SUPPORT ──────────────────────────────────
+              _buildSectionLabel('SUPPORT'),
+              const SizedBox(height: 10),
+              _buildMenuTile(
+                icon: Icons.help_outline_rounded,
+                label: 'Help & Support',
+                onTap: () {},
+              ),
+              const SizedBox(height: 32),
+
+              // ── Log Out Button ────────────────────────────────────
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => const LoginScreen()),
+                  );
+                },
+                child: Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  decoration: BoxDecoration(
+                    color: AppColors.dangerBg,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: const Color(0x33E07070)),
                   ),
-                  icon: const Icon(Icons.logout,
-                      color: Color(0xFFF87171), size: 18), 
-                  label: const Text('Log Out',
-                      style: TextStyle(
-                          color: Color(0xFFF87171), 
-                          fontSize: 15,
-                          fontWeight: FontWeight.w600)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.logout_rounded,
+                          color: AppColors.danger, size: 18),
+                      const SizedBox(width: 8),
+                      Text('Log Out',
+                          style: AppText.dm(
+                              size: 15,
+                              weight: FontWeight.w700,
+                              color: AppColors.danger)),
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 24),
 
-              // Version
-              const Center(
-                child: Text(
-                  'LUMINA V4.2.0-ASTRA',
-                  style: TextStyle(
-                      color: Color(0xFF2D3748), 
-                      fontSize: 10,
-                      letterSpacing: 1.5),
-                ),
+              // ── Version ───────────────────────────────────────────
+              Center(
+                child: Text('LUMINA V4.2.0-ASTRA',
+                    style: AppText.dm(
+                        size: 10,
+                        color: AppColors.subtle,
+                        letterSpacing: 1.5)),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
             ],
           ),
         ),
       ),
+    );
+  }
 
-      // Bottom Nav
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xFF09121C), 
-          border:
-              Border(top: BorderSide(color: Color(0xFF212E3B), width: 1)), 
+  // ── Helpers ─────────────────────────────────────────────────────
+
+  Widget _buildSectionLabel(String label) {
+    return Text(label,
+        style: AppText.dm(
+            size: 11,
+            weight: FontWeight.w600,
+            color: AppColors.muted,
+            letterSpacing: 1.4));
+  }
+
+  Widget _buildMenuTile({
+    required IconData icon,
+    required String label,
+    required VoidCallback onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: AppColors.border),
         ),
-        child: BottomNavigationBar(
-          currentIndex: _selectedIndex,
-          onTap: (i) => setState(() => _selectedIndex = i),
-          backgroundColor: Colors.transparent,
-          selectedItemColor: const Color(0xFF4FD1C5), 
-          unselectedItemColor: const Color(0xFF718096), 
-          showSelectedLabels: false,
-          showUnselectedLabels: false,
-          elevation: 0,
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined),
-                activeIcon: Icon(Icons.home),
-                label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.bar_chart_outlined),
-                activeIcon: Icon(Icons.bar_chart),
-                label: 'Stats'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle_outline),
-                activeIcon: Icon(Icons.add_circle),
-                label: 'Add'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.download_outlined),
-                activeIcon: Icon(Icons.download),
-                label: 'Download'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.settings_outlined),
-                activeIcon: Icon(Icons.settings),
-                label: 'Settings'),
+        child: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: AppColors.cyanBg,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(icon, color: AppColors.cyan, size: 18),
+            ),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Text(label,
+                  style: AppText.dm(
+                      size: 15,
+                      weight: FontWeight.w500,
+                      color: AppColors.text)),
+            ),
+            const Icon(Icons.chevron_right_rounded,
+                color: AppColors.muted, size: 20),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildMenuItem({
+  Widget _buildToggleTile({
     required IconData icon,
-    required Color iconColor,
-    required String title,
-    required bool showDivider,
+    required String label,
+    required String subtitle,
+    required bool value,
+    required ValueChanged<bool> onChanged,
   }) {
-    return Column(
-      children: [
-        InkWell(
-          onTap: () {},
-          borderRadius: BorderRadius.circular(14),
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-            child: Row(
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      decoration: BoxDecoration(
+        color: AppColors.surface,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.border),
+      ),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: AppColors.cyanBg,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Icon(icon, color: AppColors.cyan, size: 18),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: 36,
-                  height: 36,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF1A2633), 
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Icon(icon, color: iconColor, size: 18),
-                ),
-                const SizedBox(width: 14),
-                Expanded(
-                  child: Text(title,
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500)),
-                ),
-                const Icon(Icons.chevron_right,
-                    color: Color(0xFF718096), size: 20),
+                Text(label,
+                    style: AppText.dm(
+                        size: 15,
+                        weight: FontWeight.w500,
+                        color: AppColors.text)),
+                Text(subtitle,
+                    style: AppText.dm(
+                        size: 10,
+                        color: AppColors.cyan,
+                        letterSpacing: 0.8)),
               ],
             ),
           ),
+          CupertinoSwitch(
+            value: value,
+            onChanged: onChanged,
+            activeColor: AppColors.cyan,
+            trackColor: AppColors.subtle,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBottomNav() {
+    return SafeArea(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 28),
+        decoration: const BoxDecoration(
+          color: AppColors.bg,
+          border: Border(top: BorderSide(color: AppColors.border)),
         ),
-        if (showDivider)
-          const Divider(
-              height: 1, thickness: 1, color: Color(0xFF212E3B), 
-              indent: 16, endIndent: 16),
-      ],
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Icon(Icons.home_filled, color: AppColors.muted, size: 24),
+            const Icon(Icons.receipt_long_outlined,
+                color: AppColors.muted, size: 24),
+            const Icon(Icons.track_changes_outlined,
+                color: AppColors.muted, size: 24),
+            const Icon(Icons.bar_chart_rounded,
+                color: AppColors.muted, size: 24),
+            // Active: Settings
+            Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.cyanBg,
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.cyanGlow,
+                    blurRadius: 14,
+                    spreadRadius: 2,
+                  ),
+                ],
+              ),
+              child: const Icon(Icons.settings_outlined,
+                  color: AppColors.cyan, size: 22),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
